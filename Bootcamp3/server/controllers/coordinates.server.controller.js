@@ -33,6 +33,19 @@ module.exports = function(req, res, next) {
           Assumption: if we get a result we will take the coordinates from the first result returned
         */
         //  req.results = stores you coordinates
+        if (error) {
+          console.log(error);
+          response.status(404).send(error);
+        } else {
+
+          req.results = JSON.parse(body).results[0].geometry;
+          
+        }     
+
+
+
+
+
         next();
     });
   } else {
